@@ -73,7 +73,7 @@ export const userSchema = z.object({
 export type userType = z.infer<typeof userSchema> & {
 }
 
-export const newUserSchema = userSchema.omit({ id: true, })
+export const newUserSchema = userSchema.omit({ id: true })
 export type newUserType = z.infer<typeof newUserSchema>
 
 export const updateUserSchema = userSchema.omit({ id: true })

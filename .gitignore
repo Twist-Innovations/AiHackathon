@@ -417,22 +417,22 @@ next-env.d.ts
 
 # dependencies
 
-aiHackathonNext.JS/node_modules
+aihackathonnextjs/node_modules
 
 # next build output
 
-aiHackathonNext.JS/.next
-aiHackathonNext.JS/out
+aihackathonnextjs/.next
+aihackathonnextjs/out
 
 # production builds
 
-aiHackathonNext.JS/build
+aihackathonnextjs/build
 
 # env files
 
-aiHackathonNext.JS/.env*
+aihackathonnextjs/.env*
 
 # typescript
 
-aiHackathonNext.JS/*.tsbuildinfo
-aiHackathonNext.JS/next-env.d.ts
+aihackathonnextjs/*.tsbuildinfo
+aihackathonnextjs/next-env.d.ts

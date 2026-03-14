@@ -10,19 +10,6 @@ dotenv.config({ path: ".env.local" });
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     providers: [
-        //when ready to use professional email
-        // Email({
-        //     server: {
-        //         host: "smtp.hostinger.com",
-        //         port: 465,
-        //         secure: true,
-        //         auth: {
-        //             user: process.env.EMAIL,
-        //             pass: process.env.EMAIL_PASS,
-        //         },
-        //     },
-        //     from: process.env.EMAIL,
-        // }),
         Email({
             server: {
                 service: "gmail",
@@ -48,6 +35,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         },
         session({ session, token }) {
             if (token?.id) {
+                // @ts-expect-error type
                 session.user.id = token.id; // Pass the user ID to the session
             }
 

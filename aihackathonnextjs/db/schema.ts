@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { boolean, timestamp, pgTable, text, primaryKey, integer } from "drizzle-orm/pg-core"
+import { boolean, timestamp, pgTable, text, primaryKey, integer, index, json } from "drizzle-orm/pg-core"
 import type { AdapterAccountType } from "@auth/core/adapters"
 
 export const users = pgTable("users", {
@@ -17,6 +17,43 @@ export const users = pgTable("users", {
 export const userRelations = relations(users, ({ many }) => ({
     // books: many(books),
 }));
+
+
+
+
+// export const books = pgTable("books", {
+//     id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+//     dateCreated: timestamp("dateCreated", { mode: "date" }).notNull().defaultNow(),
+
+//     userId: text("userId").notNull().references(() => users.id),
+// },
+//     (table) => {
+//         return {
+//             bookUserIdIndex: index("bookUserIdIndex").on(table.userId),
+//         };
+//     })
+// export const bookRelations = relations(books, ({ one, many }) => ({
+//     fromUser: one(users, {
+//         fields: [books.userId],
+//         references: [users.id]
+//     }),
+// }));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
