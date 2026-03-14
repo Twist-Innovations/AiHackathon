@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="AiHackathon.ApiService/AiHackathon.ApiService.csproj" />
+  <Project Path="AiHackathon.AppHost/AiHackathon.AppHost.csproj" />
+  <Project Path="AiHackathon.ServiceDefaults/AiHackathon.ServiceDefaults.csproj" />
+</Solution>
