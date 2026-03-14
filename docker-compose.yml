@@ -1,0 +1,56 @@
+services:
+  # The .NET Application Service
+  api:
+    image: my-portfolio-api:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Host=db;Database=PortfolioDb;Username=postgres;Password=your_secure_password
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - backend-network
+
+  # The Python FastAPI Service
+  python-api:
+    image: python-api:latest
+    build:
+      context: ./AiHackathon.PythonApi
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - backend-network
+
+  # The Database Service
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: your_secure_password
+      POSTGRES_DB: PortfolioDb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
